@@ -37,9 +37,9 @@ public class XmlReplacer {
     Comparator<Match> comparator = Match.getMatchingTextLengthComparator();
 
     matchesPerVariable.forEach(
-        (variable, matches) ->
+        (variable, matches) -> {
           bestMatchPerVariable.put(variable, matches.stream().min(comparator).get());
-        );
+        });
 
     for (String variable : variables) {
       String replacement = new String(replacementPerVariable.get(variable).getBytes(), UTF_8);
